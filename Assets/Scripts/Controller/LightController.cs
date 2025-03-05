@@ -15,7 +15,7 @@ public class LightController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !isInside)
         {
             SetLighting(true); // Le joueur entre -> Directional ON, Spots OFF
             isInside = true;
@@ -24,7 +24,7 @@ public class LightController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && isInside)
         {
             SetLighting(false); // Le joueur sort -> Directional OFF, Spots ON
             isInside = false;

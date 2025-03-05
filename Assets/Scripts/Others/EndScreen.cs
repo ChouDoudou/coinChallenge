@@ -13,9 +13,9 @@ public class EndScreen : MonoBehaviour
     void Start()
     {
         Structure data = GameController.gameData;
-        timeText.text = Timer.GetDigitTime(data.time);
-        coinText.text = data.coinCollected.ToString();
-        enemiesText.text = data.enemiesDestroyed.ToString();
+        timeText.text = "Temps restant : " + Timer.GetDigitTime(data.time);
+        coinText.text = "Pièces récoltées : " + data.coinCollected.ToString();
+        enemiesText.text = "Ennemis éliminés : " + data.enemiesDestroyed.ToString();
     }
 
     // Update is called once per frame

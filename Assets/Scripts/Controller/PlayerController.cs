@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using Unity.VisualScripting.ReorderableList;
-using UnityEditor;
 using UnityEditor.Experimental.GraphView;
+#endif
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]                // Assure la présence du component RigidBody
