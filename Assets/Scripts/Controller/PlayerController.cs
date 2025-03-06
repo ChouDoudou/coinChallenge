@@ -125,12 +125,12 @@ public class PlayerController : MonoBehaviour
             else
             {
                 // Si le joueur n'est pas en train de sauter, il perd de la vie
-                PerdreVie(120);
+                LostLife(120);
             }
         }
     }
 
-    public void PerdreVie(int damage)
+    public void LostLife(int damage)
     {
         UpdateLife(-damage);
     }

@@ -24,6 +24,9 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        gameData = new Structure(0, 0, 0);
+
         gameOverPanel.SetActive(false);
         player = FindObjectOfType<PlayerController>();
         enemies = FindObjectsOfType<Enemy>();
@@ -49,7 +52,9 @@ public class GameController : MonoBehaviour
 
         // Désactiver les mouvements du joueur et des ennemis
         if (player != null)
+        {
             player.enabled = false;
+        }
 
         foreach (Enemy enemy in enemies)
         {
@@ -61,11 +66,12 @@ public class GameController : MonoBehaviour
     {
         IsInGame = true;
         gameOverPanel.SetActive(false);
+        gameData = new Structure(0, 0, 0);
 
         // Réinitialiser le joueur
         if (player != null)
         {
-            player.transform.position = Vector3.zero;               // Remet le joueur à la position de départ
+            player.transform.position = new Vector3(0, 0, -22);     // Remet le joueur à la position de départ
             player.UpdateLife(120);                                 // Redonne sa vie au joueur
             player.enabled = true;                                  // Réactive le mouvement
             player.SetMoveSpeed();
@@ -90,12 +96,12 @@ public class GameController : MonoBehaviour
 
     public void Teleporter(int requiredCoins)
     {
-        if (coinCollector.GetCoinCount() >= requiredCoins) // Vérifier le nombre de pièces
+        if (coinCollector.GetCoinCount() >= requiredCoins) // Vérifie le nombre de pièces
         {
             gameData.time = (int)timer.RemainingTime;
             gameData.coinCollected = coinCollector.GetCoinCount();
             gameData.enemiesDestroyed = player.enemieDestroyed;
-            SceneManager.LoadScene("EndScene"); // Charger la scène de fin
+            SceneManager.LoadScene("EndScene");            // Charge la scène de fin
         }
         else
         {
